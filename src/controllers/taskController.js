@@ -2,6 +2,7 @@ import Task from "../models/Tasks.js";
 
 export const createTask = async (req, res, next) => {
   try {
+    console.log(req.body);
     const task = await Task.create({
       ...req.body,
       user: req.user,
@@ -19,6 +20,7 @@ export const createTask = async (req, res, next) => {
 
 export const getTasks = async (req, res, next) => {
   try {
+    console.log("THIS IS GETING CALLED")
     const tasks = await Task.find({ user: req.user });
 
     res.status(200).json({

@@ -6,12 +6,12 @@ import generateToken from "../utils/generateToken.js";
 export const registerUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
+    console.log(req.body);
 
     const userExists = await User.findOne({ email });
+    console.log(userExists);
     if (userExists) {
-      const error = new Error("User already exists");
-      error.statusCode = 400;
-      return next(error);
+      return res.status(200).json({ message: "User already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
