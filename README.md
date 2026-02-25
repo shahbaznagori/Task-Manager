@@ -1,16 +1,48 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Projet overview:
+Task Manager is a React + Vite app that lets authenticated users create, view, update, delete, and filter tasks by status and title.
+It uses API-driven task fetching/status filtering with instant client-side title search, plus protected routes and a clean dashboard UI for task management.
 
-## React Compiler
+Features implemented:
+User authentication flow with protected routes (login, register, guarded dashboard access).
+Full task CRUD: create, view, edit, and delete tasks.
+Task status management (pending / completed) with status-based filtering (API-backed).
+Live title search on already-loaded tasks (client-side filtering, no API call on typing).
+Responsive dashboard UI with modal-based task form and reusable components.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Technologies used:
+Front end:React Vite , Tailwindcss
+Backend : Nodejs , expressjs.
+Database:  mongodb mongoose ODM
 
-## Expanding the ESLint configuration
+Database Schema : You can see the models directory for user and tasks.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your task manager app.
+API endpoints :
+These are the API endpoints used 
+base url:localhost:5000/api
+
+POST /auth/register
+POST /auth/login
+POST /tasks
+GET /tasks
+GET /tasks/filter (with optional query params: status, title)
+PUT /tasks/:id
+DELETE /tasks/:id
+
+Setup and run instructions:
+install dependencies npm install
+ensure env file has the URL for backend VITE_API_BASE_URL=http://localhost:5000/api
+start dev server npm run dev
+open the url shown in the server http://localhost:5173
+
+Your planning and execution approach:
+Understand requirement precisely first (expected behavior, API vs client-side, UI wording).
+Inspect only relevant files quickly (Pages, components, api) using targeted search.
+Verify by re-reading changed files and searching for old logic.
+Report exactly what changed, where, and what was not executed.
+
+Any assumptions or design decisions you made:
+Assumed title search should be client-side only (filter already-loaded tasks) based on your latest direction.
+Preserved list order while filtering.
